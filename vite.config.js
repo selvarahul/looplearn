@@ -1,8 +1,11 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:'/looplearn',
+  base: '/looplearn/',        // <-- required for GitHub Pages under /looplearn/
+  build: {
+    chunkSizeWarningLimit: 1200
+  }
 })

@@ -18,7 +18,7 @@ function Navbar() {
           <Link to="about" smooth={true} duration={800}>About</Link>
         </li>
         <li>
-          <Link to="get" smooth={true} duration={800} className="cta">
+          <Link to="login" smooth={true} duration={800} className="cta">
             Get Started
           </Link>
         </li>

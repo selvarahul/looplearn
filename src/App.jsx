@@ -1,5 +1,6 @@
-// App.jsx
+// src/App.jsx
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Element } from "react-scroll";
 
 // Common Components
 import Navbar from "./components/Navbar";
@@ -29,7 +30,7 @@ function App() {
   const location = useLocation();
 
   // ✅ Paths where Navbar & Footer should be hidden
-  const hideLayoutPaths = ["/login", "/signup", "/dashboard","/main"];
+  const hideLayoutPaths = ["/login", "/signup", "/dashboard", "/main"];
 
   // ✅ Also hide for dynamic routes
   const hideLayoutPrefixes = [
@@ -55,8 +56,14 @@ function App() {
           path="/"
           element={
             <>
-              <Hero />
-              <Features />
+              {/* Wrap with Element so react-scroll Links work */}
+              <Element name="hero">
+                <Hero />
+              </Element>
+
+              <Element name="features">
+                <Features />
+              </Element>
             </>
           }
         />
@@ -82,7 +89,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* Fallback 404 Page */}
-        <Route path="*" element={<h2 className="text-center mt-10">404 - Page Not Found</h2>} />
+        <Route
+          path="*"
+          element={<h2 className="text-center mt-10">404 - Page Not Found</h2>}
+        />
       </Routes>
 
       {/* Footer */}
